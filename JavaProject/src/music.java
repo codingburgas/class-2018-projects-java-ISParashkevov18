@@ -25,37 +25,39 @@ public class music {
 		System.out.println("Connected!");
 	}
 
-	public void ShowCustomers() {
-		String query1 = "SELECT TOP 2 * FROM Musician";
+	public void ShowMusician() {
+		String query1 = "SELECT TOP 3 * FROM Musician";
 		Statement stmt;
 		try {
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(query1);
 			while (rs.next()) {
-				System.out.println(rs.getString("first_name"));
+				System.out.print(rs.getString("First_Name") + " ");
+				System.out.println(rs.getString("Last_Name"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void DeleteCustomers() {
+	public void DeleteMusician() {
 		String query1 = "DELETE FROM dbo.Musician WHERE MusicianID = ?";
 		try {
 			PreparedStatement pst = conn.prepareStatement(query1);
-			pst.setInt(1, 15);
+			pst.setInt(6, 0);
 			pst.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void UpdateCustomers(Integer Musician, String First_Name) {
-		String query1 = "UPDATE dbo.Musician SET First_Name = ? " + "WHERE MusicianID = ?";
+	public void UpdateMusician(int Musician, String First_Name, String Last_Name) {
+		String query1 = "UPDATE dbo.Musician SET First_Name = ? " + " SET Last_Name = ?" + "WHERE MusicianID = ?";
 		try {
 			PreparedStatement pst = conn.prepareStatement(query1);
 			pst.setString(1, First_Name);
-			pst.setInt(2, 6);
+			pst.setString(2, Last_Name);
+			pst.setInt(3, 6);
 			pst.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();

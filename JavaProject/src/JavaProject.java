@@ -19,25 +19,25 @@ public class JavaProject {
 		System.out.println("Select statement: ");
 		System.out.println();
 
-		cs.ShowCustomers();
+		cs.ShowMusician();
 
 		System.out.println();
 		System.out.println("Delete statement: ");
 		System.out.println();
 
-		cs.DeleteCustomers();
+		cs.DeleteMusician();
 
 		System.out.println();
 		System.out.println("Update statement: ");
 		System.out.println();
 
-		cs.UpdateCustomers(17, "Gosho");
+		cs.UpdateMusician(6, "Metro", "Boomin");
 
 		System.out.println();
 		System.out.println("Insert statement: ");
 		System.out.println();
 
-		cs.InsertCustomers( 6 , "Cometazine", "tt");
+		cs.InsertCustomers( 6 , "Metro", "Boomin");
 	}
 
 }
