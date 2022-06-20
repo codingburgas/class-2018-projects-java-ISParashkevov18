@@ -43,8 +43,8 @@ public class UserRepository {
 		return listOfUsers;
 	}
 
-	public List<User> getRegisteredUser(String userName, String userPassword) {
-		List<User> listOfUsers = new ArrayList<>();
+	public User getRegisteredUser(String userName, String userPassword) {
+		User user = null;
 		String query = "SELECT * FROM Users WHERE userName = ? AND userPassword = ?;";
 		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
 				PreparedStatement ps = conn.prepareStatement(query)) {
@@ -55,14 +55,13 @@ public class UserRepository {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				User user = mapToUser(resultSet);
-				listOfUsers.add(user);
+				user = mapToUser(resultSet);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return listOfUsers;
+		return user;
 	}
 
 	public boolean getAdminUser(String userName, String userPassword) {
@@ -88,8 +87,8 @@ public class UserRepository {
 		return true;
 	}
 
-	public void insertUser(String userName, String firstName, String lastName, String email, String userPassword,
-			int isTeacher) {
+	public boolean insertUser(String userName, String firstName, String lastName, String email, String userPassword,
+			boolean teacher) {
 		String query1 = "INSERT INTO users (userName, firstName, lastName, email, userPassword, isTeacher) VALUES (?, ?, ?, ?, ?,?)";
 		try (Connection conn = DriverManager.getConnection(ApplicationProperties.JDBC_URL);
 				PreparedStatement pst = conn.prepareStatement(query1)) {
@@ -98,11 +97,23 @@ public class UserRepository {
 			pst.setString(3, lastName);
 			pst.setString(4, email);
 			pst.setString(5, userPassword);
-			pst.setInt(6, isTeacher);
+			pst.setBoolean(6, teacher);
 
 			int rs = pst.executeUpdate();
 
-			System.out.println(rs);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return teacher;
+	}
+	public void deleteUserById(int userId) {
+		String query1 = "DELETE FROM Users WHERE userId = ?";
+		try (Connection conn = DataBaseConnection.getConnection();
+			PreparedStatement pst1 = conn.prepareStatement(query1)) {
+	
+			pst1.setInt(1, userId);
+	
+			int rs = pst1.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

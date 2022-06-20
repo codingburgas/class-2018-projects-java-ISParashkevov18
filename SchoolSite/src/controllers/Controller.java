@@ -1,22 +1,18 @@
 package controllers;
 
 import menus.WelcomeMenu;
-import repositories.UserRepository;
 import menus.*;
-import models.User;
+
 
 import utils.ConsoleUtils;
 import services.AuthenticationService;
-import java.util.*;
 
 public class Controller {
-	private AuthenticationController authController = new AuthenticationController();
-
+	private AuthenticationController authController = new AuthenticationController(); 
 	private AccMenu accMenus = new AccMenu();
 	private RegistrationController register = new RegistrationController();
 	private WelcomeMenu welcomeMenu = new WelcomeMenu(); 
 
-	private UserRepository repo = new UserRepository();
 
 	private AuthenticationService authService;
 
@@ -44,8 +40,8 @@ public class Controller {
 			accMenus.loginMenu();
 
 			authController.run();
-			
-			if (authService.getLoggedUser()!=null) {
+			 
+			if (authService.getLoggedUser().getIsTeacher()) {
 				AdminController adminController = new AdminController();
 				adminController.run();
 			}else {

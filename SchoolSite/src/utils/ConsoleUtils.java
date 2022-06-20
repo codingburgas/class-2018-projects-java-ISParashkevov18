@@ -8,6 +8,9 @@ public class ConsoleUtils {
     public static void writeConsoleLine(Object object) {
         System.out.println(object);
     }
+    public static void writeInteger(int number) {
+        System.out.print(number);
+    }
     
     public static String readConsoleLine() {
         return scanner.nextLine();
@@ -24,5 +27,8 @@ public static int readInteger() {
 			}
 		}  
     	return result;
+}
+public static void writeNewLine() {    
+    System.out.println();
 }
 }

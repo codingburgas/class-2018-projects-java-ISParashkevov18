@@ -21,18 +21,19 @@ public class UserService {
         return UserService.instace;
     }
     
-		
+    public void deleteUserById(int userId) {
+		usersRepository.deleteUserById(userId);
+	}	
+    public List<User> getAllUsers() {
+		List<User> users = usersRepository.getAllUsers();
+		return users;
+	}
     public UserService() {
         this.usersRepository = UserRepository.getInstance();
     }
 
-    public List<User> getRegisteredUser(String userName, String userPassword) {
-		List<User> users = usersRepository.getRegisteredUser(userName, userPassword);
-		
-		if(users.isEmpty()) {
-			return null;
-		} 
-
+    public User getRegisteredUser(String userName, String userPassword) {
+		User users = usersRepository.getRegisteredUser(userName, userPassword);
 		return users;
 	}
 
@@ -44,5 +45,5 @@ public class UserService {
 		}
 		return true;
 	}
-    
+
 }

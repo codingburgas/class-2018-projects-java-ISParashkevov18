@@ -1,7 +1,5 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class User {
@@ -27,10 +25,13 @@ public class User {
     // Getters and Setters
     
 
+	public boolean getIsTeacher() {
+		return isTeacher;
+	}
 
-    public int hashCode() {
-        return Objects.hash(userId);
-    }
+	public void setIsTeacher(boolean isTeacher) {
+		this.isTeacher = isTeacher;
+	}
 
     public int getUserId() {
 		return userId;
@@ -80,13 +81,7 @@ public class User {
 		this.userPassword = userPassword;
 	}
 
-	public boolean getIsTeacher() {
-		return isTeacher;
-	}
 
-	public void setIsTeacher(boolean isTeacher) {
-		this.isTeacher = isTeacher;
-	}
 
 	@Override
     public String toString() {

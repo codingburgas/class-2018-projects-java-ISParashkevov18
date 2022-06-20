@@ -5,7 +5,7 @@ public class AccMenu {
 	public static void loginMenu(){
 		ConsoleUtils.writeConsoleLine("------------------------------------------------------------------");
 		ConsoleUtils.writeConsoleLine("|                                                                |");
-		ConsoleUtils.writeConsoleLine("|                              Admin                             |");
+		ConsoleUtils.writeConsoleLine("|                           Admin or User                        |");
 		ConsoleUtils.writeConsoleLine("|                                                                |");
 		ConsoleUtils.writeConsoleLine("|                    Enter username and password                 |");
 		ConsoleUtils.writeConsoleLine("|                                                                |");

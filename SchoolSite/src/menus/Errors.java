@@ -8,10 +8,19 @@ public class Errors {
 		ConsoleUtils.writeConsoleLine("------------------------------------------------------");
 		ConsoleUtils.writeConsoleLine("|                                                    |");
 		ConsoleUtils.writeConsoleLine("|                  Wrong credentials                 |");
-		ConsoleUtils.writeConsoleLine("|                  	 Try again!		                |");
+		ConsoleUtils.writeConsoleLine("|                     Try again                      |");
 		ConsoleUtils.writeConsoleLine("|                                                    |");
 		ConsoleUtils.writeConsoleLine("------------------------------------------------------");
 		return"";
+	}
+
+	public static void invalidUsername() {
+		ConsoleUtils.writeConsoleLine("------------------------------------------------------");
+		ConsoleUtils.writeConsoleLine("|                                                    |");
+		ConsoleUtils.writeConsoleLine("|                  Wrong credentials                 |");
+		ConsoleUtils.writeConsoleLine("|                     Try again!                     |");
+		ConsoleUtils.writeConsoleLine("|                                                    |");
+		ConsoleUtils.writeConsoleLine("------------------------------------------------------");
 	}
 
 }
